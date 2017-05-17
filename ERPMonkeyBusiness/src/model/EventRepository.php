@@ -1,4 +1,4 @@
-<?php
+<?php namespace model;
 /**
  * Created by PhpStorm.
  * User: kimprzybylski

@@ -5,7 +5,7 @@
       <paths name="Webserver">
         <serverdata>
           <mappings>
-            <mapping deploy="/public_html/ERPMonkeyBusiness" local="$PROJECT_DIR$" web="/ERPMonkeyBusiness" />
+            <mapping deploy="/public_html/ProjectWerkpakket1" local="$PROJECT_DIR$" web="/ProjectWerkpakket1" />
           </mappings>
         </serverdata>
       </paths>

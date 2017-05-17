@@ -1,4 +1,4 @@
-<?php
+<?php namespace testmodel;
 
 require_once 'src/model/Event.php';
 require_once 'src/model/PDOEventRepository.php';

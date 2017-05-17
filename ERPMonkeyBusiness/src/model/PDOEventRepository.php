@@ -1,12 +1,14 @@
-<?php
+<?php namespace model;
 /**
  * Created by PhpStorm.
  * User: kimprzybylski
  * Date: 13/05/17
  * Time: 20:39
  */
-require_once 'EventRepository.php';
-require_once 'Event.php';
+/*require_once 'EventRepository.php';
+require_once 'Event.php';*/
+
+
 
 class PDOEventRepository implements EventRepository
 {

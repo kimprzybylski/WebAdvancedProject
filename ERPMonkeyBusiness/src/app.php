@@ -6,10 +6,15 @@
  * Time: 20:34
  */
 
-require_once 'model/PDOEventRepository.php';
+/*require_once 'model/PDOEventRepository.php';
+require_once 'view/EventJsonView.php';
+require_once 'controller/EventContreller.php';*/
 
-/*$event = new Event(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
-print_r($event);*/
+require_once '../vendor/autoload.php';
+
+use \model\PDOEventRepository;
+use \view\EventJsonView;
+use \controller\EventController;
 
 $user = 'root';
 $password = 'user';
@@ -21,7 +26,11 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $eventPDORepository = new PDOEventRepository($pdo);
-    $eventPDORepository->addEvent('testEvent', '2017-01-01', '2017-04-01', 2);
+    $eventJsonView = new EventJsonView();
+    $eventController = new EventController($eventPDORepository, $eventJsonView);
+
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $eventController->handleFindEventById($id);
 
 } catch (PDOException $exception) {
     var_dump($exception->getMessage());
