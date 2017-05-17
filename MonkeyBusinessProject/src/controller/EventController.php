@@ -24,10 +24,11 @@ class EventController
 
     public function handleFindAllEvents(){
         $events = $this->eventRepository->findAllEvents();
-        foreach ($events as $event) {
-            $this->view->show(['event' => $event]);
+        if(count($events) >0){
+            foreach ($events as $event) {
+                $this->view->show(['event' => $event]);
+            }
         }
-
     }
 
     public function handleFindEventById($id = null)
@@ -38,8 +39,10 @@ class EventController
 
     public function handleFindEventByPersonId($personId = null){
         $events = $this->eventRepository->findEventByPersonId($personId);
-        foreach ($events as $event) {
-            $this->view->show(['event' => $event]);
+        if(count($events) >0){
+            foreach ($events as $event) {
+                $this->view->show(['event' => $event]);
+            }
         }
     }
 

@@ -6,12 +6,10 @@
  * Time: 18:25
  */
 
-namespace testmodel;
 
-require_once 'src/model/Event.php';
-require_once 'src/model/EventRepository.php';
-require_once 'src/model/PDOEventRepository.php';
+require_once 'vendor/autoload.php';
 
+use \model\Event;
 use \model\PDOEventRepository;
 
 class PDOEventRepositoryTest extends \PHPUnit\Framework\TestCase
@@ -59,7 +57,7 @@ class PDOEventRepositoryTest extends \PHPUnit\Framework\TestCase
     public function testFindAllEvents_exeptionThrownFromPDO_Null()
     {
         $this->mockPDOStatement->expects($this->atLeastOnce())
-            ->method('execute')->will($this->throwException(new \PDOException()));
+            ->method('execute')->will($this->throwException(new PDOException()));
 
 
         $this->mockPDO->expects($this->atLeastOnce())
@@ -317,39 +315,31 @@ class PDOEventRepositoryTest extends \PHPUnit\Framework\TestCase
     }
 
     public function testAddEvent_EventAdded_True(){
-        //Arrange
-        $pdoEventRepository = new PDOEventRepository($this->mockPDO);
 
-        //Act
-        $result = $pdoEventRepository->addEvent('testEvent', '2017-03-01', '2017-03-02', 2);
-
-        //Assert
-        $this->assertTrue($result);
-
-        /*$event = new Event(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
-        $this->mockPDOStatement->expects($this->atLeastOnce())
-            ->method('bindParam');
-
-
-        $this->mockPDOStatement->expects($this->atLeastOnce())
-            ->method('execute')->will($this->returnValue(true));
-
-
+        $event = new Event(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
+        $this->mockPDOStatement->expects($this->atLeastOnce())->method('execute')->Will($this->returnValue(true));
+        $this->mockPD0->expects($this->atLeastOnce())->method('prepare')->will($this->returnValue($this->mockStatement));
 
         $pdoRepository = new PDOEventRepository($this->mockPDO);
-        $result = $pdoRepository->addEvent($event->getName(), $event->getStartDate(), $event->getEndDate(), $event->getPersonId());
+        $result = $pdoRepository->addEvent('testEvent', '2017-03-01', '2017-03-02', 2);
 
-        $this->assertTrue($result);*/
+        $this->assertTrue($result);
+    }
+
+    public function testUpdateEvent_EventUpdated_True() {
+        $pdoRepository = new  PDOEventRepository($this->mockPDO);
+        $result = $pdoRepository->updateEvent(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
+        $this->assertTrue($result);
     }
 
     public function testDeleteEvent_idExist_True() {
         $event = new Event(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
 
         $this->mockPDOStatement->expects($this->atLeastOnce())
-            ->method('prepare');
+            ->method('prepare')->wil(returnValue(true));
 
         $pdoEventRepository = new PDOEventRepository($this->mockPDO);
-        $pdoEventRepository->deleteEvent(1);
-
+        $result = $pdoEventRepository->deleteEvent(1);
+        $this->assertTrue($result);
     }
 }

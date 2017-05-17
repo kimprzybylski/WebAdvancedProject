@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'view\\' => array($baseDir . '/src/view'),
-    'testmodel\\' => array($baseDir . '/test/model'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'model\\' => array($baseDir . '/src/model'),
     'controller\\' => array($baseDir . '/src/controller'),

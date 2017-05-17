@@ -11,10 +11,6 @@ class ComposerStaticInit14d21fbbfc1e1d222e6541af0e47b59e
         array (
             'view\\' => 5,
         ),
-        't' => 
-        array (
-            'testmodel\\' => 10,
-        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -42,10 +38,6 @@ class ComposerStaticInit14d21fbbfc1e1d222e6541af0e47b59e
         'view\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/view',
-        ),
-        'testmodel\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/test/model',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -794,7 +786,6 @@ class ComposerStaticInit14d21fbbfc1e1d222e6541af0e47b59e
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
-        'testmodel\\PDOEventRepositoryTest' => __DIR__ . '/../..' . '/test/model/PDOEventRepositoryTest.php',
         'view\\EventJsonView' => __DIR__ . '/../..' . '/src/view/EventJsonView.php',
         'view\\View' => __DIR__ . '/../..' . '/src/view/View.php',
     );

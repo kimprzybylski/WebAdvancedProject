@@ -50,7 +50,7 @@ class PDOEventRepository implements EventRepository
             } else {
                 return null;
             }
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo 'can not connect to database';
         }
     }
@@ -70,7 +70,7 @@ class PDOEventRepository implements EventRepository
 
             return $events;
 
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo 'can not connect to database';
         }
     }
@@ -90,7 +90,7 @@ class PDOEventRepository implements EventRepository
 
             return $events;
 
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo 'can not connect to database';
         }
     }
@@ -111,7 +111,7 @@ class PDOEventRepository implements EventRepository
 
             return $events;
 
-        } catch (PDOException $exception) {
+        } catch (\PDOException $exception) {
             echo 'can not connect to database';
         }
     }
@@ -127,7 +127,7 @@ class PDOEventRepository implements EventRepository
             $statement->bindParam(4, $personId, \PDO::PARAM_INT);
             $result = $statement->execute();
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             var_dump($e->getMessage());
         }
     }
@@ -144,7 +144,7 @@ class PDOEventRepository implements EventRepository
             $statement->bindParam(5, $id, \PDO::PARAM_INT);
             $statement->execute();
 
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             var_dump($e->getMessage());
         }
     }
@@ -155,7 +155,7 @@ class PDOEventRepository implements EventRepository
             $statement = $this->connection->prepare("DELETE FROM Events WHERE Id = :id");
             $statement->bindParam(':id', $id, \PDO::PARAM_INT);
             return $statement->execute();
-        } catch ( PDOException $e) {
+        } catch (\PDOException $e) {
             print 'Exception!: ' . $e->getMessage();
         }
     }

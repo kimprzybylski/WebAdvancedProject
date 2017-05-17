@@ -12,7 +12,6 @@
   "autoload": {
     "psr-4": {
       "model\\": "src/model/",
-      "testmodel\\": "test/model/",
       "controller\\": "src/controller/",
       "view\\": "src/view/"
     }
