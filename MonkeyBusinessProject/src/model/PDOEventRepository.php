@@ -121,10 +121,10 @@ class PDOEventRepository implements EventRepository
         try {
             $statement = $this->connection->prepare('INSERT INTO Events (Name, StartDate, EndDate, PersonId) VALUES (?, ?, ?, ?)');
 
-            $statement->bindParam(1, $name, PDO::PARAM_STR);
-            $statement->bindParam(2, $startDate, PDO::PARAM_STR);
-            $statement->bindParam(3, $endDate, PDO::PARAM_STR);
-            $statement->bindParam(4, $personId, PDO::PARAM_INT);
+            $statement->bindParam(1, $name, \PDO::PARAM_STR);
+            $statement->bindParam(2, $startDate, \PDO::PARAM_STR);
+            $statement->bindParam(3, $endDate, \PDO::PARAM_STR);
+            $statement->bindParam(4, $personId, \PDO::PARAM_INT);
             $result = $statement->execute();
 
         } catch (PDOException $e) {
@@ -137,11 +137,11 @@ class PDOEventRepository implements EventRepository
         try {
             $statement = $this->connection->prepare('UPDATE Events Set Name = ?, StartDate = ?, EndDate = ?, PersonId = ? WHERE Id = ?;');
 
-            $statement->bindParam(1, $name, PDO::PARAM_STR);
-            $statement->bindParam(2, $startDate, PDO::PARAM_STR);
-            $statement->bindParam(3, $endDate, PDO::PARAM_STR);
-            $statement->bindParam(4, $personId, PDO::PARAM_INT);
-            $statement->bindParam(5, $id, PDO::PARAM_INT);
+            $statement->bindParam(1, $name, \PDO::PARAM_STR);
+            $statement->bindParam(2, $startDate, \PDO::PARAM_STR);
+            $statement->bindParam(3, $endDate, \PDO::PARAM_STR);
+            $statement->bindParam(4, $personId, \PDO::PARAM_INT);
+            $statement->bindParam(5, $id, \PDO::PARAM_INT);
             $statement->execute();
 
         } catch (PDOException $e) {
@@ -153,7 +153,7 @@ class PDOEventRepository implements EventRepository
     {
         try {
             $statement = $this->connection->prepare("DELETE FROM Events WHERE Id = :id");
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            $statement->bindParam(':id', $id, \PDO::PARAM_INT);
             return $statement->execute();
         } catch ( PDOException $e) {
             print 'Exception!: ' . $e->getMessage();

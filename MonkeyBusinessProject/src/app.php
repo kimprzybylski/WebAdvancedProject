@@ -25,8 +25,14 @@ try {
     $eventJsonView = new EventJsonView();
     $eventController = new EventController($eventPDORepository, $eventJsonView);
 
+    /*$startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
+    $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
+    $personId = isset($_GET['personId']) ? $_GET['personId'] : null;
+    $eventController->handleFindByPersonIdAndDate($personId,$startDate, $endDate);*/
+
+    $eventController->handleFindAllEvents();
     $id = isset($_GET['id']) ? $_GET['id'] : null;
-    $eventController->handleFindEventById($id);
+    //$eventController->handleDelete($id);
 
 } catch (PDOException $exception) {
     var_dump($exception->getMessage());
