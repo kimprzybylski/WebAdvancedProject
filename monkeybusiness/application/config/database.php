@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;dbname=MonkeyBusinessDB',
-	'hostname' => 'localhost',
+	'dsn'	=> 'mysql:host=;dbname=monkeybusinessdb',
+	'hostname' => 'webserver',
 	'username' => 'root',
-	'password' => '',
-	'database' => 'MonkeyBusinessDB',
+	'password' => 'user',
+	'database' => 'monkeybusinessdb',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

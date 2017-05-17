@@ -4,10 +4,11 @@
 <head>
     <meta charset = "utf-8">
     <title>Monkey Business</title>
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
 </head>
-<body>
+<body class="container">
 <h1>Events Monkey Business</h1>
-<table border = "1">
+<table class = "table table-bordered" border = "1">
     <?php
     echo "<tr>";
     echo "<td>Id</td>";
@@ -38,6 +39,8 @@
     ?>
 </table>
 
+<script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-1.10.2.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 </body>
 
 </html>
