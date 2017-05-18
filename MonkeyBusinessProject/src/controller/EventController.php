@@ -28,6 +28,8 @@ class EventController
             foreach ($events as $event) {
                 $this->view->show(['event' => $event]);
             }
+        } else {
+            $this->view->show(['event' => $events]);
         }
     }
 
@@ -43,20 +45,30 @@ class EventController
             foreach ($events as $event) {
                 $this->view->show(['event' => $event]);
             }
+        } else {
+            $this->view->show(['event' => $events]);
         }
     }
 
     public function handleFindEventByDate($startDate = null, $endDate = null){
         $events = $this->eventRepository->findEventByDate($startDate, $endDate);
-        foreach ($events as $event) {
-            $this->view->show(['event' => $event]);
+        if(count($events) >0){
+            foreach ($events as $event) {
+                $this->view->show(['event' => $event]);
+            }
+        } else {
+            $this->view->show(['event' => $events]);
         }
     }
 
-    public function handleFindByPersonIdAndDate($personId, $startDate, $endDate){
+    public function handleFindEventByPersonIdAndDate($personId, $startDate, $endDate){
         $events = $this->eventRepository->findEventByPersonIdAndDate($personId, $startDate, $endDate);
-        foreach ($events as $event) {
-            $this->view->show(['event' => $event]);
+        if(count($events) >0){
+            foreach ($events as $event) {
+                $this->view->show(['event' => $event]);
+            }
+        } else {
+            $this->view->show(['event' => $events]);
         }
     }
 
@@ -73,9 +85,3 @@ class EventController
     }
 
 }
-
-/*
-    public function findEventByPersonIdAndDate($personId, $startDate, $endDate);
-    public function addEvent($name, $startDate, $endDate, $personId);
-    public function updateEvent($id, $name, $startDate, $endDate, $personId);
-    public function deleteEvent($id);*/

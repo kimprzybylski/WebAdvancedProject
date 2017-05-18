@@ -30,10 +30,10 @@ try {
     $personId = isset($_GET['personId']) ? $_GET['personId'] : null;
     //$eventController->handleFindEventByPersonId($personId);
 
-    //$eventController->handleFindAllEvents();
+    $eventController->handleFindAllEvents();
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     //$eventController->handleDelete($id);
-    $eventController->handleFindEventById($id);
+    //$eventController->handleFindEventById($id);
 
 } catch (PDOException $exception) {
     var_dump($exception->getMessage());

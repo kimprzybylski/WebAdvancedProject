@@ -64,7 +64,7 @@ class EventControllerTest extends PHPUnit\Framework\TestCase
 
         $eventController = new EventController($this->mockEventRepository, $this->mockView);
         $eventController->handleFindAllEvents();
-        $this->expectOutputString('');
+        $this->expectOutputString($events);
     }
 
     public function testHandleFindEventById_eventFound_stringWithIdNameStartDateEndDatePersonId()
@@ -120,7 +120,7 @@ class EventControllerTest extends PHPUnit\Framework\TestCase
             }));
 
         $eventController = new EventController($this->mockEventRepository, $this->mockView);
-        $eventController->handleFindEventById($events[0]->getId());
+        $eventController->handleFindEventByPersonId($event->getId());
         $this->expectOutputString(sprintf("{Id :\"%d\",\"Name\":\"%s\",\"StartDate\":\"%s\",\"EndDate\":\"%s\",\"PersonId\":\"%d\"}", $event->getId(), $event->getName(), $event->getStartDate(), $event->getEndDate(), $event->getPersonId()));
     }
 
@@ -138,7 +138,105 @@ class EventControllerTest extends PHPUnit\Framework\TestCase
             }));
 
         $eventController = new EventController($this->mockEventRepository, $this->mockView);
-        $eventController->handleFindEventById(1);
+        $eventController->handleFindEventByPersonId(1);
         $this->expectOutputString('');
+    }
+
+    public function testHandleFindEventByDate_eventFound_arrayWithIdNameStartDateEndDatePersonId()
+    {
+        $events = array();
+        $event = new Event(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
+        array_push($events, $event);
+        $this->mockEventRepository->expects($this->atLeastOnce())
+            ->method('findEventByDate')
+            ->will($this->returnValue($events));
+
+        $this->mockView->expects($this->atLeastOnce())
+            ->method('show')
+            ->will($this->returnCallback(function ($object) {
+                $event = $object['event'];
+                printf("{Id :\"%d\",\"Name\":\"%s\",\"StartDate\":\"%s\",\"EndDate\":\"%s\",\"PersonId\":\"%d\"}", $event->getId(), $event->getName(), $event->getStartDate(), $event->getEndDate(), $event->getPersonId());
+            }));
+
+        $eventController = new EventController($this->mockEventRepository, $this->mockView);
+        $eventController->handleFindEventByDate($event->getStartDate(), $event->getEndDate());
+        $this->expectOutputString(sprintf("{Id :\"%d\",\"Name\":\"%s\",\"StartDate\":\"%s\",\"EndDate\":\"%s\",\"PersonId\":\"%d\"}", $event->getId(), $event->getName(), $event->getStartDate(), $event->getEndDate(), $event->getPersonId()));
+    }
+
+    public function test_handleFindEventByDate_eventFound_returnStringEmpty()
+    {
+        $events = array();
+        $this->mockEventRepository->expects($this->atLeastOnce())
+            ->method('findEventByDate')
+            ->will($this->returnValue($events));
+
+        $this->mockView->expects($this->atLeastOnce())
+            ->method('show')
+            ->will($this->returnCallback(function ($object) {
+                echo '';
+            }));
+
+        $eventController = new EventController($this->mockEventRepository, $this->mockView);
+        $eventController->handleFindEventByDate("2017-01-01", "2017-01-02");
+        $this->expectOutputString('');
+    }
+
+    public function testHandleFindEventByPersonIdAndDate_eventFound_arrayWithIdNameStartDateEndDatePersonId()
+    {
+        $events = array();
+        $event = new Event(1, 'testEvent', '2017-03-01', '2017-03-02', 2);
+        array_push($events, $event);
+        $this->mockEventRepository->expects($this->atLeastOnce())
+            ->method('findEventByPersonIdAndDate')
+            ->will($this->returnValue($events));
+
+        $this->mockView->expects($this->atLeastOnce())
+            ->method('show')
+            ->will($this->returnCallback(function ($object) {
+                $event = $object['event'];
+                printf("{Id :\"%d\",\"Name\":\"%s\",\"StartDate\":\"%s\",\"EndDate\":\"%s\",\"PersonId\":\"%d\"}", $event->getId(), $event->getName(), $event->getStartDate(), $event->getEndDate(), $event->getPersonId());
+            }));
+
+        $eventController = new EventController($this->mockEventRepository, $this->mockView);
+        $eventController->handleFindEventByPersonIdAndDate($events[0]->getPersonId(), $events[0]->getStartDate(), $events[0]->getEndDate());
+        $this->expectOutputString(sprintf("{Id :\"%d\",\"Name\":\"%s\",\"StartDate\":\"%s\",\"EndDate\":\"%s\",\"PersonId\":\"%d\"}", $event->getId(), $event->getName(), $event->getStartDate(), $event->getEndDate(), $event->getPersonId()));
+    }
+
+    public function test_handleFindEventByPersonIdAndDate_eventFound_returnStringEmpty()
+    {
+        $events = array();
+        $this->mockEventRepository->expects($this->atLeastOnce())
+            ->method('findEventByPersonIdAndDate')
+            ->will($this->returnValue($events));
+
+        $this->mockView->expects($this->atLeastOnce())
+            ->method('show')
+            ->will($this->returnCallback(function ($object) {
+                echo '';
+            }));
+
+        $eventController = new EventController($this->mockEventRepository, $this->mockView);
+        $eventController->handleFindEventByPersonIdAndDate(1, "2017-01-01", "2017-01-01");
+        $this->expectOutputString('');
+    }
+
+    public function test_handleAddEvent_eventAdded_True(){
+        $this->mockEventRepository->method('addEvent')->willReturn(true);
+        $this->assertTrue($this->mockEventRepository->addEvent(1,'name', "2017-01-01", "2017-01-01", 2));
+    }
+
+    public function test_handleUpdateEvent_eventUpdated_True(){
+        $repository = $this->getMock('model\EventRepository');
+        $repository->expects($this->once())->method('addEvent');
+
+        $view = $this->getMock('view\View');
+        $view->expects($this->never())->method('show');
+        $eventController = new EventController($repository, $view);
+
+        $this->assertTrue();
+    }
+
+    public function test_handleDeleteEvent_eventDeleted_True(){
+
     }
 }
