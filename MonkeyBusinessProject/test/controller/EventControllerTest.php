@@ -4,6 +4,7 @@
  * User: kimprzybylski
  * Date: 17/05/17
  * Time: 20:22
+ * bron:excercise2
  */
 
 
@@ -221,22 +222,17 @@ class EventControllerTest extends PHPUnit\Framework\TestCase
     }
 
     public function test_handleAddEvent_eventAdded_True(){
-        $this->mockEventRepository->method('addEvent')->willReturn(true);
-        $this->assertTrue($this->mockEventRepository->addEvent(1,'name', "2017-01-01", "2017-01-01", 2));
+        $this->mockEventRepository->method('handleAddEvent')->willReturn(true);
+        $this->assertTrue($this->mockEventRepository->handleAddEvent(1,'name', "2017-01-01", "2017-01-01", 2));
     }
 
     public function test_handleUpdateEvent_eventUpdated_True(){
-        $repository = $this->getMock('model\EventRepository');
-        $repository->expects($this->once())->method('addEvent');
-
-        $view = $this->getMock('view\View');
-        $view->expects($this->never())->method('show');
-        $eventController = new EventController($repository, $view);
-
-        $this->assertTrue();
+        $this->mockEventRepository->method('handleUpdateEvent')->willReturn(true);
+        $this->assertTrue($this->mockEventRepository->handleUpdateEvent(1,'name', "2017-01-01", "2017-01-01", 2));
     }
 
     public function test_handleDeleteEvent_eventDeleted_True(){
-
+        $this->mockEventRepository->method('handleDeleteEvent')->willReturn(true);
+        $this->assertTrue($this->mockEventRepository->handleDeleteEvent(1));
     }
 }

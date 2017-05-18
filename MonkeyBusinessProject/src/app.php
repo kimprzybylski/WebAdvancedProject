@@ -4,6 +4,7 @@
  * User: kimprzybylski
  * Date: 17/05/17
  * Time: 18:04
+ * bron:excercise2
  */
 
 require_once '../vendor/autoload.php';
@@ -25,15 +26,15 @@ try {
     $eventJsonView = new EventJsonView();
     $eventController = new EventController($eventPDORepository, $eventJsonView);
 
-    $startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
+    /*$startDate = isset($_GET['startDate']) ? $_GET['startDate'] : null;
     $endDate = isset($_GET['endDate']) ? $_GET['endDate'] : null;
     $personId = isset($_GET['personId']) ? $_GET['personId'] : null;
-    //$eventController->handleFindEventByPersonId($personId);
+    $eventController->handleFindEventByPersonId($personId);
 
-    $eventController->handleFindAllEvents();
+    //$eventController->handleFindAllEvents();
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     //$eventController->handleDelete($id);
-    //$eventController->handleFindEventById($id);
+    //$eventController->handleFindEventById($id);*/
 
 } catch (PDOException $exception) {
     var_dump($exception->getMessage());
