@@ -4,10 +4,11 @@
 <head>
     <meta charset = "utf-8">
     <title>Monkey Business</title>
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
 </head>
-<body>
+<body class="container">
 <h1>Events Monkey Business</h1>
-<table border = "1">
+<table class = "table table-bordered" border = "1">
     <?php
     echo "<tr>";
     echo "<td>Id</td>";
@@ -22,13 +23,16 @@
 
     foreach($records as $r) {
         echo "<tr>";
-        echo '<td><a href ="index.php/events/'.$r->Id.'">'.$r->Id."</a></td>";
+        echo "<td><a href = '".base_url()."index.php/events/"
+            .$r->Id."'>$r->Id</a></td>";
         echo "<td>".$r->Name."</td>";
         echo "<td>".$r->StartDate."</td>";
         echo "<td>".$r->EndDate."</td>";
         echo "<td>".$r->PersonId."</td>";
-        echo '<td><a href ="index.php/events/update_event_view/'.$r->Id.'">Edit</a></td>';
-        echo '<td><a href ="index.php/events/delete/'.$r->Id.'">Delete</a></td>';
+        echo "<td><a href = '".base_url()."index.php/events/update_event_view/"
+            .$r->Id."'>Edit</a></td>";
+        echo "<td><a href = '".base_url()."index.php/events/delete/"
+            .$r->Id."'>Delete</a></td>";
         echo "<tr>";
     }
     echo "<a href = ".base_url()."index.php/events/create_event_view>Add"."</a>";
@@ -40,11 +44,6 @@
 <button onclick="getLocation()">Try It</button>
 
 <p id="demo"></p>
-
-
-
-<input type="text" id="color" />
-<button onclick="setColor()">Stel achtergrond kleur in<button/>
 
 <script>
     var x = document.getElementById("demo");
@@ -60,35 +59,11 @@
         x.innerHTML="Latitude: " + position.coords.latitude +
             "<br>Longitude: " + position.coords.longitude;
     }
-
-
-    var colorFromLocal;
-    var colorFromUser;
-    // Check browser support
-    if (typeof(Storage) !== "undefined") {
-        // Store
-        colorFromLocal = localStorage.getItem("background");
-        // Retrieve
-        if (colorFromLocal) {
-            document.body.style.backgroundColor = colorFromLocal;
-        }
-    }
-
-    function setColor() {
-        colorFromUser = document.getElementById('color').value;
-
-        if (colorFromUser) {
-            document.body.style.backgroundColor = colorFromUser;
-            if (typeof(Storage) !== "undefined") {
-                localStorage.setItem("background", colorFromUser);
-            }
-        }
-    }
-
-
 </script>
 
+
+<script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-1.10.2.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 </body>
 
 </html>
-
