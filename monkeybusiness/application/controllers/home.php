@@ -1,13 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: dries
- * Date: 3/05/17
- * Time: 16:10
- */
-
- if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-session_start(); //we need to call PHP's session object to access it through CI
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//session_start(); //we need to call PHP's session object to access it through CI
 class Home extends CI_Controller {
 
     function __construct()
@@ -26,7 +18,7 @@ class Home extends CI_Controller {
         else
         {
             //If no session, redirect to login page
-            redirect('login', 'refresh');
+            //redirect('login', 'refresh');
         }
     }
 
@@ -34,8 +26,9 @@ class Home extends CI_Controller {
     {
         $this->session->unset_userdata('logged_in');
         session_destroy();
-        redirect('home', 'refresh');
+        redirect('login', 'refresh');
     }
+
 
 }
 

@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: dries
- * Date: 3/05/17
- * Time: 16:06
- */
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
@@ -17,7 +9,7 @@ class Login extends CI_Controller {
 
     function index()
     {
-        $this->load->helper(array('form'));
+        $this->load->helper('form');
         $this->load->view('login_view');
     }
 

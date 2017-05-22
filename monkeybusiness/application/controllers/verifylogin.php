@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: dries
- * Date: 3/05/17
- * Time: 16:09
- */
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class VerifyLogin extends CI_Controller {
 
@@ -32,7 +24,7 @@ class VerifyLogin extends CI_Controller {
         else
         {
             //Go to private area
-            redirect('home', 'refresh');
+            redirect('Home', 'refresh');
         }
 
     }

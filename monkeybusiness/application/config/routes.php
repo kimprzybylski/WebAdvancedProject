@@ -53,6 +53,8 @@ $route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login'] = 'Login/index';
+
 $route['events'] = 'Event_controller/index';
 $route['events/(\d+)'] = 'Event_controller/read_event_by_id';
 $route['events/person/(\d+)'] = 'Event_controller/read_event_by_personid';
