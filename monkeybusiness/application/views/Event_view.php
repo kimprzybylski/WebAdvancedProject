@@ -45,6 +45,9 @@
 
 <p id="demo"></p>
 
+<input type="text" id="color" />
+<button onclick="setColor()">Stel achtergrond kleur in<button/>
+
 <script>
     var x = document.getElementById("demo");
 
@@ -59,6 +62,29 @@
         x.innerHTML="Latitude: " + position.coords.latitude +
             "<br>Longitude: " + position.coords.longitude;
     }
+
+    var colorFromLocal;
+    var colorFromUser;
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+        // Store
+        colorFromLocal = localStorage.getItem("background");
+        // Retrieve
+        if (colorFromLocal) {
+            document.body.style.backgroundColor = colorFromLocal;
+        }
+    }
+
+    function setColor() {
+        colorFromUser = document.getElementById('color').value;
+
+        if (colorFromUser) {
+            document.body.style.backgroundColor = colorFromUser;
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("background", colorFromUser);
+            }
+        }
+    }
 </script>
 
 
@@ -67,3 +93,6 @@
 </body>
 
 </html>
+
+
+monkeybusiness/application/views/Event_view.php
