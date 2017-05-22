@@ -85,9 +85,6 @@
 
 
 
-
-
-
             </div>
             <div class="col-lg-5 offset-lg-2">
                 <img class="img-fluid" src=<?php echo base_url("assets/img/dog.png"); ?> alt="">
