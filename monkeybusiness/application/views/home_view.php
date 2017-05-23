@@ -82,8 +82,30 @@
         <div class="row">
             <div class="col-lg-5">
                 <h2><a href="events">Ga naar evenementen</a></h2>
+                <br>
+
+                <!-- Werkpakket 5 van Christopher erin geplakt -->
+                <!-- https://www.w3schools.com/html/html5_geolocation.asp -->
+                <h2>Klik <a href="javascript:getLocation();">hier</a> om uw coördinaten weer te geven.</h2>
+
+                <p id="demo"></p>
 
 
+
+                <script>
+                    var x = document.getElementById("demo");
+                    function getLocation() {
+                        if (navigator.geolocation) {
+                            navigator.geolocation.watchPosition(showPosition);
+                        } else {
+                            x.innerHTML = "Geolocation is not supported by this browser.";}
+                    }
+                    function showPosition(position) {
+                        x.innerHTML="Latitude: " + position.coords.latitude +
+                            "<br>Longitude: " + position.coords.longitude;
+                    }
+
+                </script>
 
             </div>
             <div class="col-lg-5 offset-lg-2">

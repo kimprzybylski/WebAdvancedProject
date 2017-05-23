@@ -39,8 +39,9 @@
     <script>
         function validateForm() {
             var x = document.forms["myform"]["username"].value;
-            if (x == "") {
-                alert("Gebruikersnaam kan niet leeg zijn.");
+            var y = document.forms["myform"]["password"].value;
+            if (x == "" | y == "" ) {
+                alert("Gebruikersnaam en wachtwoord kunnen niet leeg zijn.");
                 return false;
             }
         }
