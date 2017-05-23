@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,7 +150,24 @@
 <script src=<?php echo base_url("assets/vendor/jquery/jquery.min.js"); ?> > </script>
 <script src=<?php echo base_url("assets/vendor/tether/tether.min.js"); ?> > </script>
 <script src=<?php echo base_url("assets/vendor/bootstrap/js/bootstrap.min.js");  ?> > </script>
+=======
+>>>>>>> origin/master
 
+/**
+ * Created by PhpStorm.
+ * User: dries
+ * Date: 3/05/17
+ * Time: 16:11
+ */
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+   <title>Simple Login with CodeIgniter - Private Area</title>
+ </head>
+ <body>
+   <h1>Home</h1>
+   <h2>Welcome <?php echo $username; ?>!</h2>
+<a href="home/logout">Logout</a>
 </body>
-
 </html>
